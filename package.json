@@ -1,8 +1,8 @@
 {
   "name": "cse-341-project2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "My Second Project",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/soliverson/cse-341-project2.git"
   },
-  "author": "",
+  "author": "Stacy Oliverson",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/soliverson/cse-341-project2/issues"
