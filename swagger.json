@@ -5,10 +5,9 @@
     "description": "Church Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3002",
+  "host": "https://cse-341-project2-gbsf.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -21,16 +20,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
