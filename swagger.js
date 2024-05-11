@@ -5,7 +5,7 @@ const doc = {
         title: 'Church Api',
         description: "Church Api"
     },
-    host: 'localhost:3002',
+    host: 'cse-341-project2-gbsf.onrender.com',
     schemes: ["http", "https"]
 };
 
