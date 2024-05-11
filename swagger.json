@@ -5,7 +5,7 @@
     "description": "Church Api",
     "version": "1.0.0"
   },
-  "host": "cse-341-project2-gbsf.onrender.com/",
+  "host": "https://cse-341-project2-gbsf.onrender.com/",
   "basePath": "/",
   "schemes": [
     "https"
