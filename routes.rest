@@ -1,0 +1,61 @@
+// LOCALHOST
+### Get all gospeltopics
+GET http://localhost:3002/gospeltopics
+
+### Get gospeltopic by id
+GET http://localhost:3002/gospeltopics/663f282827d0bfcf2ec8f98a
+
+### Create gospeltopic
+POST http://localhost:3002/gospeltopics HTTP/1.1
+content-type: application/json
+{
+    "topic":"Charity",
+    "definition":"Charity is the pure love of Christ. It is the love that Christ has for the children of men and that the children of men should have for one another. It is the highest, noblest, and strongest kind of love and the most joyous to the soul.",
+    "scriptures":"Moroni 7:47, D&C 59:5, 1 Corinthians 13, Luke 10:30-37, 1 John 3:16-18, 1 John 4:7-11, 1 John 4:18-19",
+    "hymns":"Because I Have Been Given Much, I'll Go Where You Want Me to Go, Faith of Our Fathers",
+    "quotes":"Charity is the antidote to contention. Charity is the spiritual gift that helps us to cast off the natural man, who is selfish, defensive, prideful, and jealous. Charity is the principal characteristic of a true follower of Jesus Christ. Charity defines a peacemaker. When we humble ourselves before God and pray with all the energy of our hearts, God will grant us charity. -President Russell M. Nelson",
+    "otherGT":"Jesus Christ, Faith, Hope, Service"
+
+}
+
+### PUT gospeltopic
+PUT http://localhost:3002/gospelusers/663f287927d0bfcf2ec8f98b HTTP/1.1
+content-type: application/json
+
+  {
+    "topic":"Faith in Jesus Christ",
+    "definition":"Faith in Jesus Christ is the first principle of the gospel. It means not only believing in Him but placing your trust in Him. Having faith includes hoping for and believing in things that are true, even when you can’t see them or completely understand them. Faith is a principle of action and power that motivates our day-to-day activities.",
+    "scriptures":"Alma 7:11-13, Matthew 17:20, Matthew 14:25-33, Alma 32:21-43, Romans 10:17, Helaman 15:7-8",
+    "hymns":"Faith of Our Fathers, When Faith Endures, I Believe in Christ, As Zion's Youth in Latter Days, True to the Faith",
+    "quotes":"Faith in Jesus Christ is the greatest power available to us in this life. All things are possible to them that believe. - President Russell M. Nelson",
+    "otherGT":"Jesus Christ, Hope, Charity, Repentance, Miracles"
+  }
+
+### Get all hymns
+GET http://localhost:3002/hymns
+
+### Get hymn by id
+GET http://localhost:3002/hymns/663f282827d0bfcf2ec8f98a
+
+### Create hymn
+POST http://localhost:3002/hymns HTTP/1.1
+content-type: application/json
+{
+    "hymnName":"I Know That My Redeemer Lives",
+    "hymnNumber":"136",
+    "scriptures":"Moroni 7:47, D&C 59:5, 1 Corinthians 13, Luke 10:30-37, 1 John 3:16-18, 1 John 4:7-11, 1 John 4:18-19",
+    "topic":"Assurance, Easter, Faith, Hope, Jesus Christ, Joy",
+    "scripture":"Job 19:25, Psalm 104:33-34",
+}
+
+### PUT gospeltopic
+PUT http://localhost:3002/hymns/663f28c827d0bfcf2ec8f98d HTTP/1.1
+content-type: application/json
+
+  {
+    "hymnName":"I Believe in Christ",
+    "hymnNumber":"134",
+    "scriptures":"Moroni 7:47, D&C 59:5, 1 Corinthians 13, Luke 10:30-37, 1 John 3:16-18, 1 John 4:7-11, 1 John 4:18-19",
+    "topic":"Jesus Christ, Christmas, Committment, Easter, Faith, Praise",
+    "scripture":"2 Nephi 25:23, 2 Nephi 25:26, 2 Nephi 25:29, Mormon 7:5-7",
+  }
