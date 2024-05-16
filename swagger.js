@@ -2,15 +2,15 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
     info: {
-        title: 'Church Api',
-        description: "Church Api"
+        title: 'Church API',
+        description: 'Church API Documentation'
     },
     host: 'cse-341-project2-gbsf.onrender.com',
-    schemes: ["http", "https"]
+    schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
-//this will generate swagger.json
+// Generate swagger.json
 swaggerAutogen(outputFile, endpointsFiles, doc);
