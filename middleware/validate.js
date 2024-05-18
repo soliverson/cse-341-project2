@@ -1,8 +1,12 @@
 const { body } = require('express-validator');
 
 const gospeltopicValidation = [
-    body('topic').not().isEmpty().withMessage('Topic is required'),
-    body('definition').not().isEmpty().withMessage('Definition is required'),
+    body('topic').notEmpty().withMessage('Topic is required'),
+    body('definition').notEmpty().withMessage('Definition is required'),
+    body('scriptures').notEmpty().withMessage('Scriptures are required'),
+    body('hymns').notEmpty().withMessage('Hymns are required'),
+    body('quotes').notEmpty().withMessage('Quotes are required'),
+    body('otherGT').notEmpty().withMessage('Other gospel topics are required')
 ];
 
 const hymnValidation = [

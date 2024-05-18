@@ -1,15 +1,7 @@
-const { body, validationResult } = require('express-validator');
+const {validationResult } = require('express-validator');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const gospeltopicValidation = [
-    body('topic').notEmpty().withMessage('Topic is required'),
-    body('definition').notEmpty().withMessage('Definition is required'),
-    body('scriptures').notEmpty().withMessage('Scriptures are required'),
-    body('hymns').notEmpty().withMessage('Hymns are required'),
-    body('quotes').notEmpty().withMessage('Quotes are required'),
-    body('otherGT').notEmpty().withMessage('Other gospel topics are required')
-];
 
 const getAll = async (req, res) => {
     try {

@@ -31,8 +31,8 @@ app.use((req, res, next) => {
     next();
 });
 
+// Use the routes defined in routes/index.js
 app.use('/', require('./routes/index.js'));
-app.use('/hymns', require('./routes/hymns'));
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
