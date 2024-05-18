@@ -16,7 +16,7 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL })
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }) // Use MONGODB_URL as per your .env file
 }));
 
 app.use(passport.initialize());
@@ -35,10 +35,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
-app.use(cors({ origin: '*' }));
+app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*' }));
+
 app.use('/', require('./routes/index.js'));
-app.use('/', require('./routes'));
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
