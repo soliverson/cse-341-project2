@@ -1,7 +1,6 @@
-const {validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
-
 
 const getAll = async (req, res) => {
     try {
@@ -101,6 +100,5 @@ module.exports = {
     getSingle,
     createGospeltopic,
     updateGospeltopic,
-    deleteGospeltopic,
-    gospeltopicValidation
+    deleteGospeltopic
 };
