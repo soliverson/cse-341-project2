@@ -12,11 +12,13 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*' }));
+
 app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }) // Ensure this points to your MongoDB URL
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL })
 }));
 
 app.use(passport.initialize());
@@ -24,32 +26,19 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods', 
-        'POST, GET, PUT, PATCH, OPTIONS, DELETE'
-    );
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE');
     next();
 });
 
-app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*' }));
-
 app.use('/', require('./routes/index.js'));
-
-// Log environment variables to debug
-console.log("GITHUB_CLIENT_ID:", process.env.GITHUB_CLIENT_ID);
-console.log("GITHUB_CLIENT_SECRET:", process.env.GITHUB_CLIENT_SECRET);
-console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
+app.use('/hymns', require('./routes/hymns'));
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.CALLBACK_URL
-},
-function(accessToken, refreshToken, profile, done) {
+}, (accessToken, refreshToken, profile, done) => {
     return done(null, profile);
 }));
 
@@ -58,10 +47,6 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser((user, done) => {
     done(null, user);
-});
-
-app.get('/', (req, res) => {
-    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out");
 });
 
 app.get('/github/callback', passport.authenticate('github', {
