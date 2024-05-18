@@ -1,5 +1,6 @@
-const router = require('express').Router();
-
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
 
 router.use('/', require('./swagger'));
 router.use('/hymns', require('./hymns'));

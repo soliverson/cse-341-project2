@@ -1,9 +1,17 @@
+const { body, validationResult } = require('express-validator');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
-const { body, validationResult } = require('express-validator');
+
+const gospeltopicValidation = [
+    body('topic').notEmpty().withMessage('Topic is required'),
+    body('definition').notEmpty().withMessage('Definition is required'),
+    body('scriptures').notEmpty().withMessage('Scriptures are required'),
+    body('hymns').notEmpty().withMessage('Hymns are required'),
+    body('quotes').notEmpty().withMessage('Quotes are required'),
+    body('otherGT').notEmpty().withMessage('Other gospel topics are required')
+];
 
 const getAll = async (req, res) => {
-    //#swagger.tags=['Gospeltopics']
     try {
         const result = await mongodb.getDatabase().db().collection('gospeltopics').find();
         const gospeltopics = await result.toArray();
@@ -15,7 +23,6 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
-    //#swagger.tags=['Gospeltopics']
     try {
         const gospeltopicId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db().collection('gospeltopics').findOne({ _id: gospeltopicId });
@@ -31,7 +38,6 @@ const getSingle = async (req, res) => {
 };
 
 const createGospeltopic = async (req, res) => {
-    //#swagger.tags=['Gospeltopics']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -58,7 +64,6 @@ const createGospeltopic = async (req, res) => {
 };
 
 const updateGospeltopic = async (req, res) => {
-    //#swagger.tags=['Gospeltopics']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -86,7 +91,6 @@ const updateGospeltopic = async (req, res) => {
 };
 
 const deleteGospeltopic = async (req, res) => {
-    //#swagger.tags=['Gospeltopics']
     try {
         const gospeltopicId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('gospeltopics').deleteOne({ _id: gospeltopicId });
@@ -99,7 +103,6 @@ const deleteGospeltopic = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 module.exports = {
     getAll,

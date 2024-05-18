@@ -1,12 +1,11 @@
 const router = require('express').Router();
-
-const getgospeltopic = require('./controllers/gospeltopics');
+const gospeltopicsController = require('../controllers/gospeltopics');
 const { isAuthenticated } = require('../middleware/authenticate');
 
-router.get('/', getgospeltopicsController.getAllgospeltopics);
-router.get('/:id', getgospeltopicsController.getgospeltopic);
-router.post('/', isAuthenticated, getgospeltopicsController.postgospeltopic);
-router.put('/:id', isAuthenticated, getgospeltopicsController.putgospeltopic);
-router.delete('/:id', isAuthenticated, getgospeltopicsController.deletegospeltopic);
+router.get('/', gospeltopicsController.getAll);
+router.get('/:id', gospeltopicsController.getSingle);
+router.post('/', isAuthenticated, gospeltopicsController.gospeltopicValidation, gospeltopicsController.createGospeltopic);
+router.put('/:id', isAuthenticated, gospeltopicsController.gospeltopicValidation, gospeltopicsController.updateGospeltopic);
+router.delete('/:id', isAuthenticated, gospeltopicsController.deleteGospeltopic);
 
 module.exports = router;
