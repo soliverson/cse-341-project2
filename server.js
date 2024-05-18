@@ -16,7 +16,7 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }) // Use MONGODB_URL as per your .env file
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }) // Ensure this points to your MongoDB URL
 }));
 
 app.use(passport.initialize());
@@ -38,6 +38,11 @@ app.use((req, res, next) => {
 app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*' }));
 
 app.use('/', require('./routes/index.js'));
+
+// Log environment variables to debug
+console.log("GITHUB_CLIENT_ID:", process.env.GITHUB_CLIENT_ID);
+console.log("GITHUB_CLIENT_SECRET:", process.env.GITHUB_CLIENT_SECRET);
+console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
