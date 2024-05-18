@@ -1,25 +1,33 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Church Api",
-    "description": "Church Api",
+    "title": "Church API",
+    "description": "Church API Documentation",
     "version": "1.0.0"
   },
   "host": "cse-341-project2-gbsf.onrender.com",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
-    "/": {
+    "/login": {
       "get": {
-        "tags": [
-          "Hello World"
-        ],
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
@@ -36,127 +44,16 @@
     },
     "/hymns/": {
       "get": {
-        "tags": [
-          "Hymns"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Hymns"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "hymnName": {
-                  "example": "any"
-                },
-                "hymnNumber": {
-                  "example": "any"
-                },
-                "topic": {
-                  "example": "any"
-                },
-                "scripture": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/hymns/{id}": {
       "get": {
-        "tags": [
-          "Hymns"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Hymns"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "hymnName": {
-                  "example": "any"
-                },
-                "hymnNumber": {
-                  "example": "any"
-                },
-                "topic": {
-                  "example": "any"
-                },
-                "scripture": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Hymns"
-        ],
         "description": "",
         "parameters": [
           {
@@ -167,83 +64,33 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/gospeltopics/": {
       "get": {
-        "tags": [
-          "Gospeltopics"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
-        "tags": [
-          "Gospeltopics"
-        ],
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "topic": {
-                  "example": "any"
-                },
-                "definition": {
-                  "example": "any"
-                },
-                "scriptures": {
-                  "example": "any"
-                },
-                "hymns": {
-                  "example": "any"
-                },
-                "quotes": {
-                  "example": "any"
-                },
-                "otherGT": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/gospeltopics/{id}": {
       "get": {
-        "tags": [
-          "Gospeltopics"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -253,15 +100,12 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "put": {
-        "tags": [
-          "Gospeltopics"
-        ],
         "description": "",
         "parameters": [
           {
@@ -269,48 +113,15 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "topic": {
-                  "example": "any"
-                },
-                "definition": {
-                  "example": "any"
-                },
-                "scriptures": {
-                  "example": "any"
-                },
-                "hymns": {
-                  "example": "any"
-                },
-                "quotes": {
-                  "example": "any"
-                },
-                "otherGT": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       },
       "delete": {
-        "tags": [
-          "Gospeltopics"
-        ],
         "description": "",
         "parameters": [
           {
@@ -321,11 +132,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }

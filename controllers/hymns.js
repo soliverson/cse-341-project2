@@ -3,7 +3,6 @@ const ObjectId = require('mongodb').ObjectId;
 const { body, validationResult } = require('express-validator');
 
 const getAll = async (req, res) => {
-    //#swagger.tags=['Hymns']
     try {
         const result = await mongodb.getDatabase().db().collection('hymns').find();
         const hymns = await result.toArray();
@@ -15,7 +14,6 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
-    //#swagger.tags=['Hymns']
     try {
         const hymnId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db().collection('hymns').findOne({ _id: hymnId });
@@ -31,7 +29,6 @@ const getSingle = async (req, res) => {
 };
 
 const createHymn = async (req, res) => {
-    //#swagger.tags=['Hymns']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -56,7 +53,11 @@ const createHymn = async (req, res) => {
 };
 
 const updateHymn = async (req, res) => {
-    //#swagger.tags=['Hymns']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const hymnId = new ObjectId(req.params.id);
         const hymn = {
@@ -77,7 +78,6 @@ const updateHymn = async (req, res) => {
 };
 
 const deleteHymn = async (req, res) => {
-    //#swagger.tags=['Hymns']
     try {
         const hymnId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('hymns').deleteOne({ _id: hymnId });
@@ -91,10 +91,10 @@ const deleteHymn = async (req, res) => {
     }
 };
 
-// Validation middleware for the createHymn route
+// Validation middleware for the create and update routes
 const hymnValidation = [
     body('hymnName').notEmpty().withMessage('Hymn name is required'),
-    body('hymnNumber').isInt().withMessage('Hymn number must be an integer'),
+    body('hymnNumber').isInt().withMessage('Hymn number must be a number'),
     body('topic').notEmpty().withMessage('Topic is required'),
     body('scripture').notEmpty().withMessage('Scripture is required'),
 ];

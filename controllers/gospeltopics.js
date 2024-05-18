@@ -100,11 +100,6 @@ const deleteGospeltopic = async (req, res) => {
     }
 };
 
-// Validation middleware for the create and update routes
-const gospeltopicValidation = [
-    body('topic').not().isEmpty().withMessage('Topic is required'),
-    body('definition').not().isEmpty().withMessage('Definition is required'),
-];
 
 module.exports = {
     getAll,
