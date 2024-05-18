@@ -3,6 +3,8 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
+    //#swagger.tags=['hymns']
+
     try {
         const result = await mongodb.getDatabase().db().collection('hymns').find();
         const hymns = await result.toArray();
@@ -14,6 +16,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
+    //#swagger.tags=['hymns']
     try {
         const hymnId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db().collection('hymns').findOne({ _id: hymnId });
@@ -29,6 +32,7 @@ const getSingle = async (req, res) => {
 };
 
 const createHymn = async (req, res) => {
+    //#swagger.tags=['hymns']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -53,6 +57,7 @@ const createHymn = async (req, res) => {
 };
 
 const updateHymn = async (req, res) => {
+    //#swagger.tags=['hymns']
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -78,6 +83,7 @@ const updateHymn = async (req, res) => {
 };
 
 const deleteHymn = async (req, res) => {
+    //#swagger.tags=['hymns']
     try {
         const hymnId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('hymns').deleteOne({ _id: hymnId });
