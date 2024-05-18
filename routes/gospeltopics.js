@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const gospeltopicsController = require('../controllers/gospeltopics');
 const { isAuthenticated } = require('../middleware/authenticate');
+const { gospeltopicValidation } = require('../middleware/validate');
+
 
 router.get('/', gospeltopicsController.getAll);
 router.get('/:id', gospeltopicsController.getSingle);

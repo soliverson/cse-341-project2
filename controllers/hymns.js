@@ -1,6 +1,6 @@
+const { validationResult } = require('express-validator');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
-const { body, validationResult } = require('express-validator');
 
 const getAll = async (req, res) => {
     try {
@@ -38,7 +38,7 @@ const createHymn = async (req, res) => {
         hymnName: req.body.hymnName,
         hymnNumber: req.body.hymnNumber,
         topic: req.body.topic,
-        scripture: req.body.scripture,
+        scripture: req.body.scripture
     };
     try {
         const response = await mongodb.getDatabase().db().collection('hymns').insertOne(hymn);
@@ -64,7 +64,7 @@ const updateHymn = async (req, res) => {
             hymnName: req.body.hymnName,
             hymnNumber: req.body.hymnNumber,
             topic: req.body.topic,
-            scripture: req.body.scripture,
+            scripture: req.body.scripture
         };
         const response = await mongodb.getDatabase().db().collection('hymns').replaceOne({ _id: hymnId }, hymn);
         if (response.modifiedCount > 0) {
@@ -91,19 +91,10 @@ const deleteHymn = async (req, res) => {
     }
 };
 
-// Validation middleware for the create and update routes
-const hymnValidation = [
-    body('hymnName').notEmpty().withMessage('Hymn name is required'),
-    body('hymnNumber').isInt().withMessage('Hymn number must be a number'),
-    body('topic').notEmpty().withMessage('Topic is required'),
-    body('scripture').notEmpty().withMessage('Scripture is required'),
-];
-
 module.exports = {
     getAll,
     getSingle,
     createHymn,
     updateHymn,
-    deleteHymn,
-    hymnValidation
+    deleteHymn
 };
